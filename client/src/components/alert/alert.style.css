@@ -1,0 +1,24 @@
+@keyframes appear {
+    0% {
+        @apply opacity-0;
+    }
+    100% {
+        @apply opacity-100;
+    }
+}
+
+.alert {
+    @apply flex items-center font-medium p-3 border rounded-xl transition-opacity;
+    animation: appear 0.5s forwards;
+    & > .icon {
+        @apply w-6 mr-2;
+    }
+}
+
+.error {
+    @apply text-brandRed bg-secondaryRed border-brandRed;
+}
+
+.success {
+    @apply text-center text-brandYellow bg-brandYellow border-brandYellow bg-opacity-50;
+}

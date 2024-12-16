@@ -1,0 +1,30 @@
+.field {
+    @apply w-full;
+    & > .label {
+        @apply text-white text-xl font-bold mb-3;
+    }
+    & > .icon {
+        @apply absolute mt-3 ml-2 w-7;
+    }
+    &:has(.icon) {
+        input {
+            @apply pl-10;
+        }
+    }
+}
+
+input[type=number], input[type=text], input[type=password] {
+    @apply bg-field w-full text-white font-medium cursor-pointer rounded-xl p-4;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input::placeholder {
+    @apply opacity-50;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}

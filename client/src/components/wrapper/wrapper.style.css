@@ -1,0 +1,12 @@
+.wrapper{
+    @apply flex flex-col items-start justify-center [&>*]:mb-3 text-white;
+    & > .title {
+        @apply ml-5 text-4xl font-semibold;
+    }
+    & > .description {
+        @apply text-xl font-normal text-brandGray;
+    }
+    & > .container {
+        @apply flex flex-col p-5 rounded-xl bg-brandWidget border-2 border-secondaryWidget;
+    }
+}

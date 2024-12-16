@@ -1,0 +1,40 @@
+a, button {
+    @apply w-full flex flex-col items-center rounded-xl px-5 py-3 cursor-pointer text-nowrap;
+    transition: color 0.5s;
+    & > .title {
+        @apply text-center text-xl font-bold;
+    }
+    & > .icon {
+        @apply w-8;
+    }
+}
+
+.square-button {
+    @apply p-2 aspect-square justify-center;
+    & > .icon {
+        @apply aspect-square;
+    }
+}
+
+.yellow-button {
+    @apply bg-brandYellow;
+    & > .title {
+        @apply text-black;
+    }
+    &:hover {
+        @apply bg-secondaryYellow;
+        & > .title {
+            @apply text-white;
+        }
+    }
+}
+
+.gray-button {
+    @apply bg-brandGray;
+    & > .title {
+        @apply text-white;
+    }
+    &:hover {
+        @apply bg-secondaryGray;
+    }
+}

@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Gilroy';
+    font-style: normal;
+    src: url('../public/assets/fonts/gilroy-medium.woff2') format('woff');
+}
+
+@keyframes screenChange {
+    0% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+body {
+    @apply m-0 bg-default box-border leading-5;
+    font-family: Gilroy;
+}
+
+#root {
+    @apply w-dvw h-dvh flex flex-col justify-center items-center;
+    & > * {
+        animation: screenChange 0.5s;
+    }
+}
+
+form {
+    @apply [&>*]:mb-4;
+    & > button {
+        @apply mb-0;
+    }
+}
