@@ -12,6 +12,9 @@ export type Props = Partial<ButtonHTMLAttributes<HTMLButtonElement> & AnchorHTML
     title?: string
     icon?: string
     className?: string
+    style?: {
+        [key: string]: string | number
+    }
     to?: string
     onClick?: () => void
 }
@@ -35,6 +38,9 @@ const Button: FC<Props> = ({
             className={className}
             {...{ to, onClick }}
             {...props}
+            style={{
+                ...props.style
+            }}
         >
             {icon && <img className='icon' src={icon} alt={icon} />}
             {title && <div className='title'>{title}</div>}

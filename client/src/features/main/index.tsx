@@ -1,4 +1,4 @@
-import { type FC, useCallback } from 'react'
+import { type FC, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm, type FieldValues } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
@@ -8,7 +8,9 @@ import type { ValidationResponse } from '../../types/common'
 import Wrapper from '../../components/wrapper'
 import Button from '../../components/button'
 import Field from '../../components/field'
-import Alert from '../../components/alert'
+import Alert, { showAlert } from '../../components/alert'
+
+import './main.style.css'
 
 type Fields = {
     id: string
@@ -64,60 +66,62 @@ const Main: FC<Props> = ({ username, logout }) => {
 
     const errorMessage = (error as AxiosError<ValidationResponse>)?.response?.data?.message
 
+    useEffect(() => {
+        if (status == 'error') {
+            showAlert('Произошла какая-то ошибка', 'error')
+        }
+    }, [status])
+
     return (
         <>
+        <Alert />
+        <Wrapper
+            className="main-screen-header"
+        >
+            <div className="header-username">
+                {username}
+            </div>
+            <Button
+                className="header-button"
+                icon="/assets/logout.png"
+                onClick={logout}
+            />
+        </Wrapper>
+        <Wrapper
+            className='center-container-wrapper main-container-wrapper'
+        >
             <Wrapper
-                className="absolute right-5 top-5 [&>.container]:!p-3"
+            className="conference-form-wrapper"
+            title="Подключиться"
             >
-                <div className="flex items-center gap-5">
-                    <div className="text-2xl">
-                        {username}
-                    </div>
-                    <Button
-                        className="square-button w-10 gray-button"
-                        icon="/assets/logout.png"
-                        onClick={logout}
-                    />
-                </div>
-            </Wrapper>
-            <Wrapper
-                className="min-w-[600px] max-md:min-w-full mb-2"
-                title="Подключайтесь"
+            <form
+                className="join-conference-form"
+                onSubmit={handleSubmit(onJoin)}
             >
-                <form
-                    className="flex gap-5 [&>*]:mb-0"
-                    onSubmit={handleSubmit(onJoin)}
-                >
-                    <Field
-                        id="id"
-                        type="text"
-                        placeholder="id конференции"
-                        register={register}
-                    />
-                    <Button
-                        title="Подключиться"
-                        className="yellow-button max-w-48 h-fit"
-                    />
-                </form>
-            </Wrapper>
-            {
-                status === 'error' &&
-                <Alert
-                    className="min-w-[600px] max-md:min-w-full error mb-5"
-                    icon="/assets/info.svg"
-                    title={errorMessage || 'Что-то пошло не так'}
+                <Field
+                    id="id"
+                    type="text"
+                    placeholder="id конференции"
+                    register={register}
+                    className="conference-id-field"
                 />
-            }
+                <Button
+                    title="Подключиться"
+                    className="base-action-button join-conference-button"
+                />
+            </form>
+            </Wrapper>
             <Wrapper
-                className="min-w-[600px] max-md:min-w-full"
-                title="или Создайте новую"
+                className="conference-form-wrapper"
+                title="Создать новую конференцию"
             >
                 <Button
-                    title="Создать конференцию"
+                    title="Создать"
                     onClick={onCreate}
-                    className="yellow-button"
+                    className="base-action-button create-conference-button"
                 />
             </Wrapper>
+        </Wrapper>
         </>
     )
 }

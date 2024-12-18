@@ -1,0 +1,29 @@
+.auth-container-wrapper {
+    padding: 2rem 1rem !important;
+    gap: 0.5rem !important;
+    width: 30rem !important;
+    max-width: 22rem !important;
+    background: #FFC5C5;
+    border: 1px solid #000000;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: inherit;
+}
+
+.auth-field {
+    height: 48px;
+    font-size: 12pt;
+    border-radius: 15px;
+}
+
+.auth-field::placeholder {
+    font-size: 12pt;
+}
+
+.base-action-button.auth-button {
+    height: 48px;
+    border-radius: 15px;
+}

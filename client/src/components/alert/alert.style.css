@@ -1,24 +1,47 @@
 @keyframes appear {
     0% {
-        @apply opacity-0;
+        opacity: 0;
     }
     100% {
-        @apply opacity-100;
+        opacity: 1;
     }
 }
 
 .alert {
-    @apply flex items-center font-medium p-3 border rounded-xl transition-opacity;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 18pt;
+    font-weight: 600;
+    padding: 1rem;
+    gap: 0.25em;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    transition: opacity 0.3s;
     animation: appear 0.5s forwards;
-    & > .icon {
-        @apply w-6 mr-2;
-    }
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.alert > .icon {
+    width: 1.5rem;
+    margin-right: 0.5rem;
 }
 
 .error {
-    @apply text-brandRed bg-secondaryRed border-brandRed;
+    background: rgba(255, 139, 128, 0.182);
+    border: 1px solid #ffa0a06f;
+    color: #000000;
 }
 
 .success {
-    @apply text-center text-brandYellow bg-brandYellow border-brandYellow bg-opacity-50;
+    text-align: center;
+    color: #000;
+    background: rgba(255, 139, 128, 0.182);
+    border-color: #ffa0a06f;
 }

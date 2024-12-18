@@ -1,0 +1,128 @@
+.main-video-frames-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(100% - 4rem);
+    width: calc(100% - 4rem);
+    background: #FFB7B9;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.participants-frames-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.participant-frame-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    background: #FFAAA4;
+    border-radius: 20px;
+    font-size: 10pt;
+}
+
+.video-frame {
+    border-radius: 20px;
+}
+
+.participant-no-video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.person-icon {
+    height: 5rem;
+    width: 5rem;
+    margin: auto;
+}
+
+.meeting-control-buttons-wrapper {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 0.5rem;
+    background: #FFAAA4;
+    border-radius: 15px;
+}
+
+.meeting-control-square-button {
+    height: 3rem;
+    width: 3rem;
+    padding: 0.8rem;
+    background: #E1887F;
+    border-radius: 15px;
+}
+
+.meeting-control-exit-button {
+    height: 3rem;
+    width: fit-content;
+    font-size: 12pt;
+    padding: 0.6rem 1.5rem;
+    background: #FF0000;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 750px) {
+    .meeting-control-buttons-wrapper {
+        bottom: 1rem;
+        right: 50%;
+        transform: translateX(50%);
+        padding: 0.8rem;
+        width: fit-content;
+    }
+
+    .main-video-frames-wrapper {
+        height: calc(100% - 2rem);
+        width: calc(100% - 2rem);
+        border-radius: 30px;
+    }
+
+    .participants-frames-grid {
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .meeting-control-buttons-wrapper {
+        bottom: 1rem;
+        right: 50%;
+        transform: translateX(50%);
+        padding: 0.8rem;
+        width: fit-content;
+    }
+
+    .meeting-control-square-button {
+        height: 12vw;
+        width: 12vw;
+        padding: 0.4rem;
+    }
+
+    .meeting-control-exit-button {
+        height: 12vw;
+        font-size: 4.2vw;
+        padding: 2vw 8vw;
+    }
+    
+}
+

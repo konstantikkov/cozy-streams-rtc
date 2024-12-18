@@ -1,40 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Gilroy';
-    font-style: normal;
-    src: url('../public/assets/fonts/gilroy-medium.woff2') format('woff');
+    font-family: 'Montserrat', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 }
 
 @keyframes screenChange {
     0% {
-        transform: translateY(10px);
+        /* transform: translateY(10px); */
         opacity: 0;
     }
     100% {
-        transform: translateY(0);
+        /* transform: translateY(0); */
         opacity: 1;
     }
 }
 
 
 body {
-    @apply m-0 bg-default box-border leading-5;
-    font-family: Gilroy;
+    background-image: url('/assets/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-black);
+    margin: 0;
+    padding: 0;
 }
 
 #root {
-    @apply w-dvw h-dvh flex flex-col justify-center items-center;
-    & > * {
-        animation: screenChange 0.5s;
-    }
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-form {
-    @apply [&>*]:mb-4;
-    & > button {
-        @apply mb-0;
+#root > * {
+    animation: screenChange 0.5s;
+}
+
+:root {
+    --text-black: #000000;
+    --text-brandGray: #A0AEC0;
+    --bg-brandWidget: #FFC5C5;
+    --border-secondaryWidget: #000000;
+
+    .center-container-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        padding: 2.5rem 5rem;
+        gap: 2rem;
+        border-radius: 50px;
+        width: calc(100% - 4rem);
+        max-width: 45rem;
+    }
+
+    @media screen and (max-width: 750px) {
+        .center-container-wrapper {
+            padding: 2.5vh 7.5vw;
+            border-radius: 40px;
+            gap: 1.5rem;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .center-container-wrapper {
+            padding: 2.5vh 5vw;
+            border-radius: 30px;
+            width: calc(100% - 2rem);
+            gap: 1rem;
+        }
+    }
+
+    .field {
+        cursor: text;
     }
 }

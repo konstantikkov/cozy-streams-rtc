@@ -6,6 +6,7 @@ type Props = PropsWithChildren<{
     title?: string
     description?: string
     className?: string
+    containerClassName?: string
 }>
 
 const Wrapper: FC<Props> = ({
@@ -13,7 +14,20 @@ const Wrapper: FC<Props> = ({
     description,
     className = '',
     children,
+    containerClassName,
 }) => (
+    (!!title || !!description) ? 
+    <div className={`wrapper ${className}`}>
+        { title && <div className={`${className}-title`}>{title}</div> }
+        { description && <div className="description">{description}</div> }
+        {
+            children &&
+            <div className={`container${containerClassName}`}>
+                { children }
+            </div>
+        }
+    </div> 
+    :
     <div className={`wrapper ${className}`}>
         { title && <div className={`${className}-title`}>{title}</div> }
         { description && <div className="description">{description}</div> }
@@ -21,4 +35,4 @@ const Wrapper: FC<Props> = ({
     </div>
 )
 
-export default Wrapper
+export default WrapperTitle

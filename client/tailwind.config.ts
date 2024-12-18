@@ -9,20 +9,22 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['var(--font-sans)', ...fontFamily.sans]
-      },
+      // fontFamily: {
+      //   sans: ['var(--font-sans)', ...fontFamily.sans]
+      // },
       colors: {
-        brandYellow: '#FFCD1E',
+        brandYellow: '#E1887F',
         secondaryYellow: '#A47F00',
         brandGray: '#858585',
         secondaryGray: '#323232',
-        default: "#040117",
         field: "#22222C",
-        brandWidget: "#2B2A37",
+        brandWidget: "#FFC5C5",
         secondaryWidget: "#535269",
         brandRed: "#DD3F3F",
         secondaryRed: "#671D1D"
+      },
+      backgroundImage: {
+        'default': 'linear-gradient(180deg, #FFE1E1 0%, #FFBDBD 100%)'
       }
     }
   },

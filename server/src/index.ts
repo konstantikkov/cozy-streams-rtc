@@ -16,9 +16,12 @@ const options: https.ServerOptions = {
 const app = express()
 
 app.use(cors({
+    origin: 'https://localhost:5173',
+    methods: 'GET,POST,PUT,DELETE',
     credentials: true, // Allow credentials (cookies, HTTP auth)
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
 }))
+
 app.use(express.json())
 app.use(cookieParser())
 app.use('/api', apiRouter)

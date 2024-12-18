@@ -1,20 +1,42 @@
 .field {
-    @apply w-full;
-    & > .label {
-        @apply text-white text-xl font-bold mb-3;
-    }
-    & > .icon {
-        @apply absolute mt-3 ml-2 w-7;
-    }
-    &:has(.icon) {
-        input {
-            @apply pl-10;
-        }
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 68px;
+    padding: 18px 12px;
+    border: 1.1px solid #000000;
+    border-radius: 20px;
+    background-color: #FFB7B9;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18pt;
+    letter-spacing: 0.05em;
+    color: #000000;
 }
 
-input[type=number], input[type=text], input[type=password] {
-    @apply bg-field w-full text-white font-medium cursor-pointer rounded-xl p-4;
+.field::placeholder {
+    display: flex;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18pt;
+    text-align: left;
+    letter-spacing: 0.05em;
+    color: #000000;
+    opacity: 0.29;
+}
+
+.field > .icon {
+    position: absolute;
+    margin-top: 0.75rem;
+    margin-left: 0.5rem;
+    width: 1.75rem;
+}
+
+.field:has(.icon) input {
+    padding-left: 2.5rem;
 }
 
 input::-webkit-outer-spin-button,
@@ -23,8 +45,9 @@ input::-webkit-inner-spin-button {
 }
 
 input::placeholder {
-    @apply opacity-50;
+    opacity: 0.5;
 }
+
 input[type=number] {
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
 }

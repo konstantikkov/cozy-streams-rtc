@@ -7,7 +7,9 @@ import type { ValidationResponse } from '../../types/common'
 import Wrapper from '../../components/wrapper'
 import Button from '../../components/button'
 import Field from '../../components/field'
-import Alert from '../../components/alert'
+import Alert, { showAlert } from '../../components/alert'
+
+import './auth.style.css'
 
 type Fields = {
     username: string
@@ -39,52 +41,45 @@ const Authentication: FC<Props> = ({ login }) => {
 
     const errorMessage = (error as AxiosError<ValidationResponse>)?.response?.data?.message
 
+    if(errorMessage) {
+        showAlert(errorMessage, 'error', '/assets/info.svg')
+    }
+
     const onSubmit = useCallback(async (data: FieldValues) => {
         await authorize(data as Fields)
     }, [authorize])
 
     return (
         <>
+            <Alert />
             <Wrapper
-                className="w-80 max-md:min-w-full"
-                title="Авторизация"
+            className="center-container-wrapper auth-container-wrapper"
             >
-                <form
-                    onSubmit={handleSubmit(onSubmit)}
-                >
-                    <Field
-                        id="username"
-                        type="text"
-                        placeholder="Никнейм"
-                        register={register}
-                    />
-                    <Field
-                        id="password"
-                        type="password"
-                        placeholder="Пароль"
-                        register={register}
-                    />
-                    <Button
-                        title="Авторизоваться"
-                        className="yellow-button"
-                    />
-                </form>
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="auth-form"
+            >
+                <Field
+                    id="username"
+                    type="text"
+                    placeholder="Никнейм"
+                    register={register}
+                    className="auth-field"
+                />
+                <Field
+                    id="password"
+                    type="password"
+                    placeholder="Пароль"
+                    register={register}
+                    className="auth-field"
+                />
+                <Button
+                    title="Авторизоваться"
+                    className="base-action-button auth-button"
+                />
+            </form>
             </Wrapper>
-            {
-                data?.message &&
-                <Alert
-                    className={`w-80 max-md:min-w-full ${data?.type}`}
-                    title={data?.message}
-                />
-            }
-            {
-                status === 'error' &&
-                <Alert
-                    title={errorMessage || 'Что-то пошло не так'}
-                    className="w-80 max-md:min-w-full error"
-                    icon="/assets/info.svg"
-                />
-            }
+
         </>
     )
 }

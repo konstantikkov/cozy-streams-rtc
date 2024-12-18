@@ -25,6 +25,7 @@ router
             })
             const token = jwt.sign(
                 { userId: createdUser.id },
+                // @ts-ignore
                 process.env.JWT_SECRET,
                 { expiresIn: '1d' }
             )
@@ -42,6 +43,7 @@ router
         if (await bcrypt.compare(password, user.password)) {
             const token = jwt.sign(
                 { userId: user.id },
+                // @ts-ignore
                 process.env.JWT_SECRET,
                 { expiresIn: '1d' }
             )

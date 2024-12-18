@@ -1,12 +1,30 @@
-.wrapper{
-    @apply flex flex-col items-start justify-center [&>*]:mb-3 text-white;
-    & > .title {
-        @apply ml-5 text-4xl font-semibold;
-    }
-    & > .description {
-        @apply text-xl font-normal text-brandGray;
-    }
-    & > .container {
-        @apply flex flex-col p-5 rounded-xl bg-brandWidget border-2 border-secondaryWidget;
-    }
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-black);
+}
+
+.wrapper > .title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40pt;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.wrapper > .description {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-brandGray);
+}
+
+.wrapper > .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

@@ -11,6 +11,7 @@ type Props = {
     icon?: string
     initialValue?: string
     type?: string
+    className?: string
 }
 
 const Field: FC<Props> = ({
@@ -20,17 +21,15 @@ const Field: FC<Props> = ({
     label,
     icon,
     initialValue,
-    placeholder
+    placeholder,
+    className = ''
 }) => (
-    <div className="field">
-        { label && <div className="label">{label}</div> }
-        { icon && <img className="icon" src={icon} /> }
-        <input
-            type={type}
-            placeholder={placeholder}
-            {...register(id, { value: initialValue })}
-        />
-    </div>
+    <input
+        type={type}
+        placeholder={placeholder}
+        className={`field ${className}`}
+        {...register(id, { value: initialValue })}
+    />
 )
 
 export default Field

@@ -1,0 +1,129 @@
+.main-container-wrapper {
+    background: #FFB7B9;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+}
+
+.conference-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1.8rem;
+}
+
+.conference-form-wrapper-title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20pt;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.main-screen-header {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    gap: 1.2rem;
+    background: #FFA9A9;
+    border: 1.1px solid #000000;
+    border-radius: 20px;
+}
+
+.header-username {
+    display: flex;
+    align-self: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15pt;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.header-button {
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.join-conference-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    width: 100%;
+}
+
+.conference-id-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 68px;
+    padding: 18px 12px;
+    border: 1.1px solid #000000;
+    border-radius: 20px;
+    background-color: #FFB7B9;
+}
+
+.conference-id-field::placeholder {
+    display: flex;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18pt;
+    text-align: left;
+    letter-spacing: 0.05em;
+    color: #000000;
+    opacity: 0.29;
+}
+
+@media screen and (max-width: 750px) {
+    .conference-form-wrapper {
+        gap: 1.5rem;
+    }
+    .conference-id-field::placeholder {
+        font-size: 4vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .main-screen-header {
+        top: 1rem;
+        right: 1rem;
+        border-radius: 15px;
+    }
+
+    .header-username {
+        font-size: 4.2vw;
+    }
+
+    .conference-form-wrapper {
+        gap: 1rem;
+    }
+
+    .conference-form-wrapper-title {
+        font-size: 5.2vw;
+    }
+    
+    .conference-id-field {
+        height: 58px;
+        border-radius: 15px;
+    }
+}

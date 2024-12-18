@@ -44,7 +44,6 @@ const useMedia = () => {
         connections.current[id] = new RTCPeerConnection({
             iceServers: ICE_SERVERS
         })
-        connections.current[id].createDataChannel('test')
 
         // connections.current[id].onicecandidate = async (event) => {
         //     console.log(event)
@@ -56,16 +55,12 @@ const useMedia = () => {
         const offer = await connections.current[id].createOffer()
         await connections.current[id].setLocalDescription(offer)
 
-        await sendData(id, 'offer', offer)
+        sendData(id, 'offer', offer)
         onTrack(id)
     }, [onTrack, connections])
 
     const answer: Answer = useCallback(async (id, sendData, offer) => {
         connections.current[id] = new RTCPeerConnection({ iceServers: ICE_SERVERS })
-
-        connections.current[id].ondatachannel = () => {
-            console.log('datachannel')
-        }
 
         await connections.current[id].setRemoteDescription(offer)
 
@@ -109,6 +104,10 @@ const useMedia = () => {
                     } else {
                         (media.self.current.srcObject as MediaStream).addTrack(videoTrack)
                     }
+                    break
+                }
+                default: {
+                    console.error('Unknown source')
                     break
                 }
             }

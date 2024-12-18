@@ -45,7 +45,8 @@ const createMeetingServer = () => {
                 if (!meetingPool[id]) {
                     ws.close(1001)
                 }
-
+                
+                // @ts-ignore
                 const { userId } = (token && jwt.verify(token, process.env.JWT_SECRET)) as { userId: string }
 
                 const user = await prisma.user.findFirst({

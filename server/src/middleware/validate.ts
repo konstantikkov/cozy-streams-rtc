@@ -11,7 +11,7 @@ const validate = async (req: Request, res: Response, next: NextFunction) => {
         const { username, password } = req?.body || {}
 
         if (username?.length < MIN_LENGTH || password?.length < MIN_LENGTH) {
-            throw 'Минимальная длина никнейна и пароля - 6 символов'
+            throw 'Минимальная длина никнейма и пароля - 6 символов'
         }
 
         next()

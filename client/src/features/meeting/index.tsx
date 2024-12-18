@@ -6,6 +6,8 @@ import Wrapper from '../../components/wrapper'
 import useMedia from '../../hooks/use-media'
 import Button from '../../components/button'
 
+import './meeting.style.css'
+
 type Props = {
     username: string
 }
@@ -46,23 +48,29 @@ const Meeting: FC<Props> = ({ username }) => {
 
     return (
         <>
-            <div className="w-full flex flex-wrap justify-center items-center gap-5 p-5">
+            <div className="participants-frames-grid main-video-frames-wrapper">
                 {
                     meeting.users.map(({ username, id }) => (
-                        <Wrapper className="min-w-44">
-                            <video
-                                className="w-full rounded-xl mb-3"
-                                playsInline
-                                autoPlay
-                                ref={media[id]}
-                            />
+                        <Wrapper className="participant-frame-wrapper">
+                            {media[id] ? (
+                                <video
+                                    className="participant-video-frame video-frame"
+                                    playsInline
+                                    autoPlay
+                                    ref={media[id]}
+                                />
+                            ) : (
+                                <div className='participant-no-video'>
+                                    <img src="/assets/person.svg" className="person-icon" />
+                                </div>
+                            )}
                             {username}
                         </Wrapper>
                     ))
                 }
-                <Wrapper className="min-w-44">
+                <Wrapper className="my-video-frame-wrapper participant-frame-wrapper">
                     <video
-                        className="w-full rounded-xl mb-3"
+                        className="my-video-frame video-frame"
                         playsInline
                         autoPlay
                         muted
@@ -71,29 +79,27 @@ const Meeting: FC<Props> = ({ username }) => {
                     <div>{username}</div>
                 </Wrapper>
             </div>
-            <Wrapper className="animate-none absolute bottom-5 left-1/2 -translate-x-1/2 [&>.container]:!p-3">
-                <div className="flex gap-5">
-                    <Button
-                        icon="/assets/camera.png"
-                        className={`square-button ${isSelfVideo ? 'yellow-button' : ' gray-button'}`}
-                        onClick={onShareVideo}
-                    />
-                    <Button
-                        icon="/assets/mic.png"
-                        className={`square-button ${isSelfAudio? 'yellow-button' : ' gray-button'}`}
-                        onClick={onShareAudio}
-                    />
-                    <Button
-                        icon="/assets/share.png"
-                        className="square-button gray-button"
-                        onClick={onCopyInvite}
-                    />
-                    <Button
-                        title="Отключиться"
-                        className="gray-button h-fit"
-                        onClick={onDisconnect}
-                    />
-                </div>
+            <Wrapper className="meeting-control-buttons-wrapper">
+                <Button
+                    icon="/assets/camera.png"
+                    className={`meeting-control-square-button ${isSelfVideo ? 'base-action-button' : ' gray-button'}`}
+                    onClick={onShareVideo}
+                />
+                <Button
+                    icon="/assets/mic.png"
+                    className={`meeting-control-square-button ${isSelfAudio? 'base-action-button' : ' gray-button'}`}
+                    onClick={onShareAudio}
+                />
+                <Button
+                    icon="/assets/share.png"
+                    className="meeting-control-square-button gray-button"
+                    onClick={onCopyInvite}
+                />
+                <Button
+                    title="Отключиться"
+                    className="meeting-control-exit-button h-fit"
+                    onClick={onDisconnect}
+                />
             </Wrapper>
         </>
     )

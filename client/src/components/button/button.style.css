@@ -1,40 +1,82 @@
-a, button {
-    @apply w-full flex flex-col items-center rounded-xl px-5 py-3 cursor-pointer text-nowrap;
+.base-action-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    height: 68px;
+    width: fit-content;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    white-space: nowrap;
     transition: color 0.5s;
-    & > .title {
-        @apply text-center text-xl font-bold;
-    }
-    & > .icon {
-        @apply w-8;
-    }
+    background: #E1887F;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    filter: drop-shadow(3.29792px 4.39722px 4.39722px rgba(0, 0, 0, 0.25));
 }
 
-.square-button {
-    @apply p-2 aspect-square justify-center;
-    & > .icon {
-        @apply aspect-square;
-    }
+.base-action-button.join-conference-button {
+    padding: 0.8rem 1rem;
+    background: #E1887F;
+    border: 1.1px solid #000000;
+    border-radius: 15px;
+    box-sizing: border-box;
 }
 
-.yellow-button {
-    @apply bg-brandYellow;
-    & > .title {
-        @apply text-black;
+.base-action-button.create-conference-button {
+    padding: 1.5rem 2rem;
+    background: #FF0000;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.base-action-button .title {
+    color: white;
+    font-size: 18pt;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+.base-action-button:hover {
+    background-color: #ff998e;
+}
+
+.base-action-button.create-conference-button:hover {
+    background: #ff5b49;
+}
+
+@media screen and (max-width: 750px) {
+    .base-action-button {
+        width: 100%;
+        border-radius: 15px;
     }
-    &:hover {
-        @apply bg-secondaryYellow;
-        & > .title {
-            @apply text-white;
+    .base-action-button.join-conference-button {
+        height: 68px;
+        width: 68px;
+        min-width: 68px;
+        .title {
+            display: none;
+        }
+
+        &::before {
+            content: url('/assets/arrow_forward.svg');
+            display: inline-block;
+            align-self: center;
         }
     }
 }
 
-.gray-button {
-    @apply bg-brandGray;
-    & > .title {
-        @apply text-white;
-    }
-    &:hover {
-        @apply bg-secondaryGray;
+@media screen and (max-width: 500px) {
+    .base-action-button.join-conference-button {
+        height: 58px;
+        width: 58px;
+        min-width: 58px;
     }
 }
