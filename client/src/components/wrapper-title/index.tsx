@@ -9,7 +9,7 @@ type Props = PropsWithChildren<{
     containerClassName?: string
 }>
 
-const Wrapper: FC<Props> = ({
+const WrapperTitle: FC<Props> = ({
     title,
     description,
     className = '',

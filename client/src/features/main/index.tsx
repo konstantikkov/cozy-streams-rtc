@@ -2,7 +2,7 @@ import { type FC, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm, type FieldValues } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
-import axios, { type AxiosError } from 'axios'
+import axios from 'axios'
 
 import type { ValidationResponse } from '../../types/common'
 import Wrapper from '../../components/wrapper'
@@ -30,8 +30,7 @@ const Main: FC<Props> = ({ username, logout }) => {
     const { register, handleSubmit } = useForm<FieldValues>()
     const {
         mutate: join,
-        status,
-        error
+        status
     } = useMutation({
         mutationFn: (data: Fields) =>
             axios.post<ValidationResponse & MeetingData>(
@@ -63,8 +62,6 @@ const Main: FC<Props> = ({ username, logout }) => {
     const onJoin = useCallback((data: FieldValues) => {
         join(data as Fields)
     }, [join])
-
-    const errorMessage = (error as AxiosError<ValidationResponse>)?.response?.data?.message
 
     useEffect(() => {
         if (status == 'error') {

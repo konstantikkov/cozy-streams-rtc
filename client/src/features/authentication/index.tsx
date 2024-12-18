@@ -29,9 +29,7 @@ const Authentication: FC<Props> = ({ login }) => {
     const { register, handleSubmit } = useForm<FieldValues>()
     const {
         mutate: authorize,
-        status,
-        error,
-        data: { data } = {},
+        error
     } = useMutation({
         mutationFn: (data: Fields) => axios.post<ValidationResponse & AuthenticationData>(`${import.meta.env.VITE_BASE_API_URL}/api/authentication`, data),
         onSuccess: (response) => {

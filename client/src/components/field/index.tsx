@@ -5,10 +5,8 @@ import './field.style.css'
 
 type Props = {
     id: string
-    label?: string
     register: UseFormRegister<FieldValues>
     placeholder?: string
-    icon?: string
     initialValue?: string
     type?: string
     className?: string
@@ -18,8 +16,6 @@ const Field: FC<Props> = ({
     id,
     register,
     type,
-    label,
-    icon,
     initialValue,
     placeholder,
     className = ''
